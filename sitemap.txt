@@ -6,5 +6,4 @@ https://huxiuyuan/comment/index.html
 https://huxiuyuan/2022/03/20/Docker/docker/
 https://huxiuyuan/2022/03/19/hello-world/
 https://huxiuyuan/about/index.html
-https://huxiuyuan/gallery/elasticsearch.html
 https://huxiuyuan/
