@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://huxiuyuan/2022/03/21/Docker/Centos7%E5%AE%89%E8%A3%85Docker/</loc>
+    <loc>https://huxiuyuan/2022/03/20/Docker/docker/</loc>
     
     <lastmod>2022-03-22</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>https://huxiuyuan/2022/03/20/Docker/docker/</loc>
+    <loc>https://huxiuyuan/2022/03/21/Docker/Centos7%E5%AE%89%E8%A3%85Docker/</loc>
     
     <lastmod>2022-03-22</lastmod>
     
@@ -99,28 +99,7 @@
   </url>
   
   <url>
-    <loc>https://huxiuyuan/categories/Linux/</loc>
-    <lastmod>2022-03-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://huxiuyuan/categories/Docker/</loc>
-    <lastmod>2022-03-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://huxiuyuan/categories/Linux/Docker/</loc>
-    <lastmod>2022-03-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://huxiuyuan/categories/Docker/%E5%AE%B9%E5%99%A8/</loc>
     <lastmod>2022-03-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
