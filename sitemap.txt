@@ -1,3 +1,4 @@
+https://huxiuyuan/2022/03/22/mysql/%E7%AE%80%E5%8D%95SQL%E8%AF%AD%E5%8F%A5/
 https://huxiuyuan/2022/03/24/%E5%89%8D%E7%AB%AF/JavaScript/es6/
 https://huxiuyuan/link/index.html
 https://huxiuyuan/2022/03/20/Docker/docker/
@@ -11,6 +12,7 @@ https://huxiuyuan/about/index.html
 https://huxiuyuan/
 https://huxiuyuan/tags/Docker/
 https://huxiuyuan/tags/JavaScript/
+https://huxiuyuan/categories/MySQL/
 https://huxiuyuan/categories/Docker/
 https://huxiuyuan/categories/Hexo/
 https://huxiuyuan/categories/%E5%89%8D%E7%AB%AF/

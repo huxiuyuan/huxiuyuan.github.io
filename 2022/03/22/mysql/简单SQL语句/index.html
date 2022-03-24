@@ -1,0 +1,755 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MySQL | HXY</title><meta name="author" content="Hu XiuYuan"><meta name="copyright" content="Hu XiuYuan"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="MySQL 基本命令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL">
+<meta property="og:url" content="https://huxiuyuan/2022/03/22/mysql/%E7%AE%80%E5%8D%95SQL%E8%AF%AD%E5%8F%A5/index.html">
+<meta property="og:site_name" content="HXY">
+<meta property="og:description" content="MySQL 基本命令">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/huxiuyuan/java-learn/202203191528200.png">
+<meta property="article:published_time" content="2022-03-22T12:49:07.986Z">
+<meta property="article:modified_time" content="2022-03-24T10:30:10.427Z">
+<meta property="article:author" content="Hu XiuYuan">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/huxiuyuan/java-learn/202203191528200.png"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/huxiuyuan/java-learn/202203212205899.jpeg"><link rel="canonical" href="https://huxiuyuan/2022/03/22/mysql/%E7%AE%80%E5%8D%95SQL%E8%AF%AD%E5%8F%A5/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":50},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'MySQL',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-03-24 18:30:10'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><link rel="stylesheet" href="APlayer.min.css"><div id="aplayer"></div><script src="https://cdn.jsdelivr.net/gh/radium-bit/res@master/live2d/autoload.js" async></script><script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js" async></script><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    document.addEventListener('pjax:complete', detectApple)})(window)</script><link rel="stylesheet" href="/css/style.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-card-history/baiduhistory/css/main.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/hexo-electric-clock@1.0.6/clock.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="https://unpkg.zhimg.com/hexo-filter-gitcalendar/lib/gitcalendar.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="HXY" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://cdn.jsdelivr.net/gh/huxiuyuan/java-learn/202203182223696.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/huxiuyuan/java-learn/202203191528200.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">HXY</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">MySQL</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-22T12:49:07.986Z" title="发表于 2022-03-22 20:49:07">2022-03-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-03-24T10:30:10.427Z" title="更新于 2022-03-24 18:30:10">2022-03-24</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/MySQL/">MySQL</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>16分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="MySQL"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><ul>
+<li><p>学习数据库主要学习的就是如何对数据进行增删改查</p>
+</li>
+<li><p>DBMS: DataBaseManagementSystem,数据库管理系统(数据库软件),<br>DBMS负责管理数据库文件,负责将数据保存到数据库中.</p>
+</li>
+<li><p>常见的DBMS有:</p>
+<ul>
+<li><p>MySQL:Oracle公司产品,MariaDB其实就是MySQL的一个分支,MySQL市占率排名第一</p>
+</li>
+<li><p>Oracle: Oracle公司产品, 闭源, 性能最强价格最贵. 市占率第二</p>
+</li>
+<li><p>SQLServer: 微软公司产品,闭源 , 市占率第三</p>
+</li>
+<li><p>DB2: IBM公司产品,闭源</p>
+</li>
+<li><p>SQLite: 轻量级数据库, 安装包只有几十k , 只具备最基本的增删改查功能</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="SQL语言"><a href="#SQL语言" class="headerlink" title="SQL语言"></a>SQL语言</h2><ul>
+<li>Structured Query Language: 结构化查询语言</li>
+<li>此语言是用于程序员和数据库软件进行交流的语言</li>
+</ul>
+<h2 id="连接数据库软件"><a href="#连接数据库软件" class="headerlink" title="连接数据库软件"></a>连接数据库软件</h2><ul>
+<li><p>windows: 开始菜单-&gt;MariaDB/MySQL-&gt;MySQL Client 输入密码</p>
+</li>
+<li><p>linux/mac os: 桌面空白处右键-&gt;打开终端-&gt;输入:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql -uroot -p 回车   输入密码 再回车</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h2 id="如何使用数据库软件在数据库文件中保存数据"><a href="#如何使用数据库软件在数据库文件中保存数据" class="headerlink" title="如何使用数据库软件在数据库文件中保存数据?"></a>如何使用数据库软件在数据库文件中保存数据?</h2><ol>
+<li><p>查询所有数据</p>
+<ul>
+<li>格式: show database 数据库名;</li>
+</ul>
+</li>
+<li><p>创建数据库</p>
+<ul>
+<li><p>默认字符集: creat database 数据库名;</p>
+</li>
+<li><p>指定字符集: creat database 数据库名 charset=utf8/gbk;</p>
+</li>
+<li><p>举例</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create database db1;</span><br><span class="line">create database db2 charset=utf8;</span><br><span class="line">create database db3 charset=gbk;</span><br><span class="line">show databases;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>查询数据库信息</p>
+<ul>
+<li><p>格式: show data database 数据库名;</p>
+</li>
+<li><p>举例</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">show database db1;</span><br><span class="line">show database db2;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>删除数据库</p>
+<ul>
+<li><p>格式 drop database 数据库名;</p>
+</li>
+<li><p>举例</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">drop database db1;</span><br><span class="line">drop database db2;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>使用数据库</p>
+<ul>
+<li><p>操作表相关的SQL语句或数据相关的SQL语句之前必须使用了某个数据库</p>
+</li>
+<li><p>格式: use 数据库名</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">use db1;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<p>数据库相关SQL练习</p>
+<ol>
+<li><p>创建 mydb1和mydb2 数据库 字符集分别为utf8和gbk<br>create database mydb1 charset=utf8;<br>create database mydb2 charset=gbk;</p>
+</li>
+<li><p>查询所有数据库检查是否创建成功<br>show databases;</p>
+</li>
+<li><p>检查两个数据库的字符集是否正确</p>
+<p>show creat database mydb1;</p>
+<p>show creat database mydb2;</p>
+</li>
+<li><p>先使用mydb2 再使用 mydb1</p>
+<p>use mydb2;</p>
+<p>use mydb1;</p>
+</li>
+<li><p>删除两个数据库</p>
+<p>drop database db1;</p>
+<p>drop database db2;</p>
+</li>
+</ol>
+<hr>
+<h2 id="表相关的SQL语句"><a href="#表相关的SQL语句" class="headerlink" title="表相关的SQL语句"></a>表相关的SQL语句</h2><ul>
+<li>必须使用了某个数据库之后再执行表相关的SQL;<br>use db1;</li>
+</ul>
+<ol>
+<li><p>创建表</p>
+<ul>
+<li><p>格式: create table 表名(字段1名 类型,字段2名 类型)charset=utf8/gbk;</p>
+</li>
+<li><p>举例</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create table person(name varchar(50),age int)charset=utf8;</span><br><span class="line">创建学生表student 字段:id int,名字,chinese int,mathint,englishint 字符集gbk</span><br><span class="line">create table student(id int,name varchar(50),chinese int,matn int,english int)charset=gbk;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>查询所有表</p>
+<ul>
+<li>格式: show tables;</li>
+</ul>
+</li>
+<li><p>查看所有表信息</p>
+<ul>
+<li>格式: show create table 表名;</li>
+</ul>
+</li>
+<li><p>查看表字段</p>
+<ul>
+<li>格式: desc 表名;</li>
+</ul>
+</li>
+<li><p>删除表</p>
+<ul>
+<li>格式: drop table 表名;</li>
+</ul>
+</li>
+<li><p>修改表名</p>
+<ul>
+<li>格式: rename table 原名 to 新名</li>
+</ul>
+</li>
+<li><p>添加表字段</p>
+<ul>
+<li>最后面添加格式: alter table 表名 add 字段名 类型;</li>
+<li>最前面添加格式: alter table 表名 add 字段名 类型 first;</li>
+<li>在xxx字段后面添加格式: alter table 表名 add 字段名 类型 after xxx;</li>
+</ul>
+</li>
+<li><p>删除表字段</p>
+<ul>
+<li>格式: alter table 表明 drop 字段名;</li>
+</ul>
+</li>
+<li><p>修改表字段</p>
+<ul>
+<li>格式: alter table 表名 change 原名 新名 新类型;</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="数据相关SQL"><a href="#数据相关SQL" class="headerlink" title="数据相关SQL"></a>数据相关SQL</h2><ol>
+<li><p>插入数据(增)</p>
+<ul>
+<li><p>全表插入格式: insert into 表名 values(值1,值2);</p>
+</li>
+<li><p>指定字段插入格式: insert into 表名(字段1名,字段2名) values(值1,值2);</p>
+</li>
+<li><p>批量插入: 在values的后面写多组值用逗号分割</p>
+</li>
+<li><p>举例:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">insert into person values(&quot;a&quot;,20);</span><br><span class="line">insert into perosn(name) values(&quot;a&quot;);</span><br><span class="line">insert into person values(&quot;a&quot;,20),(&quot;b&quot;,20);</span><br></pre></td></tr></table></figure></li>
+<li><p>中文问题:insert into person values(“刘德华”,50);</p>
+<p>如果执行上面SQL语句提示错误并在错误信息中显示16进制内容执行以下SQL语句</p>
+<p>set names gbk;</p>
+<p><img src="https://cdn.jsdelivr.net/gh/huxiuyuan/learn/image-20210929093913575.png" alt="image-20210929093913575"></p>
+</li>
+</ul>
+</li>
+<li><p>查询数据</p>
+<ul>
+<li><p>格式: select 字段信息 from 表名 where 条件;</p>
+</li>
+<li><p>举例</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from person; /*查询所有字段信息*/</span><br><span class="line">select name from perosn;</span><br><span class="line">select name,age from person;</span><br><span class="line">select * from perosn where name=&quot;a&quot;;</span><br><span class="line">select name from person where age&lt;20;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>修改数据</p>
+<ul>
+<li><p>格式: update 表名 set 字段名=值,字段名=值 where 条件;</p>
+</li>
+<li><p>举例</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">update perosn set name=&quot;b&quot; where name=&quot;a&quot;;</span><br><span class="line">update person ser age=20 where name=&quot;a&quot;;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>删除数据</p>
+<ul>
+<li><p>格式: delete from 表名 where 条件;</p>
+</li>
+<li><p>举例</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">delete from perosn where name=&quot;b&quot;;</span><br><span class="line">delete from perosn;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="导入批处理文件-sql"><a href="#导入批处理文件-sql" class="headerlink" title="导入批处理文件 *.sql"></a>导入批处理文件 *.sql</h2><ul>
+<li>把*.sql文件放到某个磁盘的根目录,比如F盘</li>
+<li>在终端中执行  source 路径;    即可把emp.sql中的数据库/表/数据 导入到自己的mysql里面</li>
+<li>测试:<ul>
+<li>show databases; // 会显示多了一个 empdb</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><ol>
+<li><p>整数: int(m)和bigint        bigint相当于Java中的long,m代表长度<br>m为10时,存18 查询时显示 0000000018,需要和zerofill关键字结合使用</p>
+<ul>
+<li><p>举例:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create table t1(age int(10) zerofill);</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>浮点数: double(m,d) m代表长度,d代表小数长度   35.342  m=5  d=3<br>超高精度浮点数 decimal(m,d),当涉及到超高精度浮点数运算时使用</p>
+<ul>
+<li><p>举例</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create table t2(money double(5,3));</span><br><span class="line">insert into t2 values(55.234);  /*正常*/</span><br><span class="line">insert into t2 values(55.234556332);  /*55.235 四舍五入*/</span><br><span class="line">insert into t2 values(555.2335);  /*规则不符  出异常*/</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>字符串</p>
+<ul>
+<li>char(m): 固定长度, m=10 存abc 所占长度为10,执行效率略高于可变长度,当需求中长度时固定的值时使用,最大长度为255</li>
+<li>varchar(m): 可变长度,m=10 存abc所占长度为3,更节省空间,最大长度65535,规范保存255以内的数据,超过255的建议使用text</li>
+<li>text(m): 可变长度,最大长度65535</li>
+</ul>
+</li>
+<li><p>时间</p>
+<ul>
+<li><p>data: 只能保存年月日</p>
+</li>
+<li><p>time: 只能保存时分秒</p>
+</li>
+<li><p>datatime: 保存年月日时分秒 , 默认值为null, 最大值9999-12-31</p>
+</li>
+<li><p>timestamp(时间戳距离1970年1月1日毫秒数): 保存年月日时分秒,默认值为当前系统时间, 最大值2038-1-19</p>
+</li>
+<li><p>举例</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create table t_data(t1 data,t2 time,t3 datetime,t4 timestamp);</span><br><span class="line">insert into t_date values(&quot;2021-9-29&quot;,null,null,null);</span><br><span class="line">insert into t_date values(null,&quot;14:48:22&quot;,&quot;1985-11-22 10:20:30&quot;,null);</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="主键约束-primary-key"><a href="#主键约束-primary-key" class="headerlink" title="主键约束 primary key"></a>主键约束 primary key</h2><ul>
+<li><p>主键: 表示数据唯一性的字段称为主键</p>
+</li>
+<li><p>约束: 在创建的时候给表字段添加的限制条件</p>
+</li>
+<li><p>主键约束: 限制主键的值 唯一且非空</p>
+</li>
+<li><p>举例</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create table t(id int primary key,name varchar(20));</span><br><span class="line">insert into t values(1,&quot;a&quot;);</span><br><span class="line">insert into t values(1,&quot;b&quot;);/*报错*/</span><br><span class="line">ERROR 1062 (23000): Duplicate entry &#x27;1&#x27; for key &#x27;PRIMARY&#x27; 主键值重复错误</span><br><span class="line">insert into t values(null,&quot;赵六&quot;); //报错</span><br><span class="line">ERROR 1048 (23000): Column &#x27;id&#x27; cannot be null</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="主键约束-自增-auto-increment"><a href="#主键约束-自增-auto-increment" class="headerlink" title="主键约束+自增 auto_increment"></a>主键约束+自增 auto_increment</h2><ul>
+<li>规则: 从历史最大值+1 只增不减</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create table t3(id int primary key auto_increment,name varchar(20));</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="比较运算符-gt-lt-gt-lt-和-lt-gt"><a href="#比较运算符-gt-lt-gt-lt-和-lt-gt" class="headerlink" title="比较运算符 &gt; &lt; &gt;= &lt;= !=和&lt;&gt;"></a>比较运算符 &gt; &lt; &gt;= &lt;= !=和&lt;&gt;</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1.查询工资小于等于3000的员工信息</span><br><span class="line">select * from emp where sal&lt;=3000;</span><br><span class="line">2.查询1号部门的员工姓名和工作</span><br><span class="line">select name,job from emp where dept_id=1;</span><br><span class="line">3.查询不是程序员的员工姓名 工资和工作(两种写法)</span><br><span class="line">select name,sal,job from emp where job!=&quot;程序员&quot;;</span><br><span class="line">select name,sal,job from emp where job&lt;&gt;&quot;程序员&quot;;</span><br><span class="line">4.查询有奖金的员工姓名和奖金</span><br><span class="line">select name,comm from emp where comm&gt;0;</span><br></pre></td></tr></table></figure>
+
+<h2 id="与and-或or-非not"><a href="#与and-或or-非not" class="headerlink" title="与and 或or 非not"></a>与and 或or 非not</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1.查询1号部门工资大于2000的员工信息</span><br><span class="line">select * from emp where dept_id=1 and sal&gt;2000;</span><br><span class="line">2.查询是程序员或者工资等于5000的员工信息</span><br><span class="line">select * from emp where job=&quot;程序员&quot; or sal=5000;</span><br><span class="line">3.查询出CEO和项目经理的名字</span><br><span class="line">select name from emp where job=&quot;CEO&quot; or job=&quot;项目经理&quot;;</span><br><span class="line">4.查询奖金是500的销售信息</span><br><span class="line">select * from emp where comm=500 and job=&quot;销售&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="between-x-and-y"><a href="#between-x-and-y" class="headerlink" title="between x and y"></a>between x and y</h2><ul>
+<li>查询两者之间包含x和y</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1.查询工资在2000到3000之间的员工信息</span><br><span class="line">select * from emp where sal&gt;=2000 and sal&lt;=3000;</span><br><span class="line">select * from emp where sal between 2000 and 3000;</span><br><span class="line">2.查询工资在2000到3000之外的员工信息</span><br><span class="line">select * from emp where sal not between 2000 and 3000;</span><br></pre></td></tr></table></figure>
+
+<h2 id="in"><a href="#in" class="headerlink" title="in"></a>in</h2><ul>
+<li><p>当查询某个自动的值为多个值的时候使用</p>
+</li>
+<li><p>举例</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from emp where sal=1500 or sal=3000 or sal=5000;</span><br><span class="line">select * from emp where sal in(1500,3000,5000);</span><br><span class="line">select * from emp where sal not in(1500,3000,5000);</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="模糊查询like"><a href="#模糊查询like" class="headerlink" title="模糊查询like"></a>模糊查询like</h2><ul>
+<li>_: 代表1个未知字符</li>
+<li>%: 代表0或多个未知字符</li>
+<li>举例<ul>
+<li>以x开头 x%</li>
+<li>以x结尾 %x</li>
+<li>包含x   %x%</li>
+<li>第二个是x  _x%</li>
+<li>以x开头倒数第三个是y   x%y_</li>
+</ul>
+</li>
+</ul>
+<h2 id="排序-order-by"><a href="#排序-order-by" class="headerlink" title="排序 order by"></a>排序 order by</h2><ul>
+<li>格式: order by 排序字段名 asc(默认升序)/desc(降序)</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1.查询每个员工的姓名和工资 按照工资升序和降序排序</span><br><span class="line">select name,sal from emp order by sal;</span><br><span class="line">select name,sal from emp order by sal desc;</span><br><span class="line">2. (多字段排序)查询工资高于1000的员工姓名,工资和部门编号,按照部门编号升序排序,如果部门编号一致则按照工资降序排序</span><br><span class="line">select name,sal,dept_id from emp where sal&gt;1000 order by depe_id,sal desc;</span><br></pre></td></tr></table></figure>
+
+<h2 id="分页查询"><a href="#分页查询" class="headerlink" title="分页查询"></a>分页查询</h2><ul>
+<li><p>格式: limit 跳过的条数(跳过的页数*每页的条数),请求的条数(每页的条数)</p>
+</li>
+<li><p>举例</p>
+<ul>
+<li>limit 0,5 请求第一页的五条数据</li>
+<li>limit 5,5 请求第二页的五条数据</li>
+<li>limit 70,10 请求第八页的13条数据</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1.查询员工姓名和工资,按照工资升序排序, 查询第一页的5条数据</span><br><span class="line">select name,sal from emp order by sal limit 0,5;</span><br><span class="line">2.查询1号部门工资最高的员工姓名和工资</span><br><span class="line">select name from emp where dept_id=1 order by sal desc limit 0,1;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="别名"><a href="#别名" class="headerlink" title="别名"></a>别名</h2><p>select name as “名字” from emp;<br>select name “名字” from emp;<br>select name 名字 from emp;</p>
+<h2 id="数值计算"><a href="#数值计算" class="headerlink" title="数值计算 + - * / %"></a>数值计算 + - * / %</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1.查询每个员工的姓名,工资和年终奖(工资*5)</span><br><span class="line">select name,sal,sal*5 年终奖 from emp;</span><br><span class="line">2.让1号部门的员工涨薪5块钱</span><br><span class="line">update emp set sal=sal+5 where dept_id=1;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="聚合函数"><a href="#聚合函数" class="headerlink" title="聚合函数"></a>聚合函数</h2><ul>
+<li>聚合函数可以对查询的多条数据进行统计查询</li>
+<li>统计方式: 平均值,最大值,最小值,求和,计数</li>
+</ul>
+<ol>
+<li><p>平均值avg(字段名)</p>
+<ul>
+<li><p>查询1号部门的平均工资</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select avg(sal) from emp where dept_id=1;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>最大值max(字段名)</p>
+<ul>
+<li><p>查询1号部门的最高工资</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select max(sal) from emp where dept_id=1;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>最小值min(字段名)</p>
+<ul>
+<li><p>查询1号部门的最低工资</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select min(sal) from emp where dept_id=1;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>求和sum(字段名)</p>
+<ul>
+<li><p>查询1号部门的工资总和</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select sun(sal) from emp where dept_id=1;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>计数count(*)</p>
+<ul>
+<li><p>查询1号部门的人数</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select count(*) from emp where dept_id=1;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="分组查询"><a href="#分组查询" class="headerlink" title="分组查询"></a>分组查询</h2><ul>
+<li>可以将某个字段相同值的多条数据合并为一组然后以组为单位,进行统计查询</li>
+<li>需求中出现每个xxx或每种xxx基本都是分组查询的关键字</li>
+</ul>
+<ol>
+<li><p>查询每个部门的平均工资</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select dept_id,avg(sal) from emp group by dept_id;</span><br></pre></td></tr></table></figure></li>
+<li><p>查询每个部门的工资总和</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select dept_id,sum(sal) from emp group by dept_id;</span><br></pre></td></tr></table></figure></li>
+<li><p>查询每种工作的最高工资</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select job,max(sal) from emp group by job;</span><br></pre></td></tr></table></figure></li>
+<li><p>查询每种工作的人数</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select job,count(*) from emp group by job;</span><br></pre></td></tr></table></figure></li>
+<li><p>查询1号和2号部门的人数</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select dept_id,count(*) from emp where dept_id in(1,2) group by dept_id;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="Having"><a href="#Having" class="headerlink" title="Having"></a>Having</h2><ul>
+<li>where 后面只能写普通字段条件,不能写聚合函数条件</li>
+<li>having 后面写聚合函数条件,并且需要和group by结合使用,写在group by的后面</li>
+</ul>
+<ol>
+<li><p>查询每个部门的平均工资,要求平均工资大于2000</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select dept_id,avg(sal) from emp group by dept_id having avg(sal)&gt;2000;</span><br></pre></td></tr></table></figure></li>
+<li><p>查询每种工作的人数,只查询人数大于1的工作名称和人数.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select job,count(*) from emp group by job having count(*)&gt;1;</span><br><span class="line">/*别名写法*/</span><br><span class="line">select job,count(*) c from emp group by job having c&gt;1;</span><br></pre></td></tr></table></figure></li>
+<li><p>查询每个部门的工资总和，只查询有领导的员工，并且要求工资总和高于5400</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select dept_id,sum(sal) s from emp</span><br><span class="line">where manager is not null group by dept_id having s&gt;5400;</span><br></pre></td></tr></table></figure></li>
+<li><p>查询每个部门的平均工资,只查询工资在1000到3000之间的,并且过滤掉平均工资低于2000的部门信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select dept_id,svg(sal) a from emp where sal between 1000 and 3000</span><br><span class="line">group by dept_id having&gt;=2000;</span><br></pre></td></tr></table></figure></li>
+<li><p>查询每种工作的人数要求人数大于1个,并且只查询1号部门和2号部门的员工, 按照人数降序排序</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select job,count(*) c from emp where dept_id in(1,2) group by job</span><br><span class="line">having c&gt;1 order by desc;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<hr>
+<h2 id="各种关键字的顺序"><a href="#各种关键字的顺序" class="headerlink" title="各种关键字的顺序"></a>各种关键字的顺序</h2><ul>
+<li><p>select 字段信息 from 表名 where 普通字段条件 group by 分组字段名</p>
+<p>having 聚合函数条件 order by 排序字段名 limit 跳过条数,请求条数;</p>
+</li>
+</ul>
+<hr>
+<h2 id="子查询-嵌套查询"><a href="#子查询-嵌套查询" class="headerlink" title="子查询(嵌套查询)"></a>子查询(嵌套查询)</h2><ol>
+<li><p>查询工资高于1号部门 平均工资的员工信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select avg(sal) from emp where dept_id=1;</span><br><span class="line">select * from emp where sal&gt;(select avg(sal) from emp where</span><br><span class="line">dept_id=1);</span><br></pre></td></tr></table></figure></li>
+<li><p>查询工资最高的员工信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from emp where sal=(select max(sal) from emp);</span><br></pre></td></tr></table></figure></li>
+<li><p>查询工资高于2号部门最低工资的员工信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from emp where sal&gt;(select min(sal) from emp where</span><br><span class="line">dept_id=2);</span><br></pre></td></tr></table></figure></li>
+<li><p>查询和孙悟空相同工作的其它员工信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select job from emp where name=&quot;孙悟空&quot;;</span><br><span class="line">select * from emp where job=(select job from emp where </span><br><span class="line">name=&quot;孙悟空&quot;) and name!=&quot;孙悟空&quot;;</span><br></pre></td></tr></table></figure></li>
+<li><p>查询拿最低工资员工的同事们的信息(同事指相同部门)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/*先得到最低工资*/</span><br><span class="line">select min(sal) from emp;</span><br><span class="line">/*通过最低工资得到部门id*/</span><br><span class="line">select dept_id from emp where sal=(select min(sal) from emp)</span><br><span class="line">/*通过部门id得到所有员工, 还要排除掉最低工资*/</span><br><span class="line">select * from emp where dept_id=(select dept_id from emp where</span><br><span class="line">sal=(select min(sal) from emp)) and sal!=(select min(sal) from emp);</span><br></pre></td></tr></table></figure></li>
+</ol>
+<hr>
+<h2 id="关联关系"><a href="#关联关系" class="headerlink" title="关联关系"></a>关联关系</h2><ul>
+<li>创建表时,表和表之间存在的业务关系</li>
+<li>包含以下几种关系:<ul>
+<li>一对一关系:有AB两张表,A表中的一条数据对应B表中的一条数据,同时B表中的一条数据也对应A表中的一条数据</li>
+<li>一对多关系:有AB两张表,A表中的一条数据对应B表中的多条数据,同时B表中的一条数据也对应A表中的多条数据</li>
+<li>多对多关系:有AB两张表,A表中的一条数据对应B表中的多条数据,同时B表中的一条数据也对应A表中的多条数据</li>
+</ul>
+</li>
+<li>如何让表之间建立联系?<ul>
+<li>一对一关系: 在AB两张表任何一个表中添加建立联系的字段</li>
+<li>一对多关系:在一对多中,多的表里面添加建立关系的字段</li>
+<li>多对多关系:需要创建一个单独的关系表,里面两个字段指向另外两个表的主键</li>
+</ul>
+</li>
+</ul>
+<h2 id="关联查询"><a href="#关联查询" class="headerlink" title="关联查询"></a>关联查询</h2><ul>
+<li>查询存在关联方式的表的查询方式称为关联查询</li>
+<li>三种查询方式: 等值连接,内连接和外连接</li>
+</ul>
+<h2 id="关联查询之等值连接"><a href="#关联查询之等值连接" class="headerlink" title="关联查询之等值连接"></a>关联查询之等值连接</h2><ul>
+<li><p>格式: select * from A,B where 关联关系 and 其他条件;</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/*1.查询工资高于2000的每个员工的姓名和对应的部门名*/</span><br><span class="line">select e.name,d.name</span><br><span class="line">from emp e,dept d where e.dept_id=d.id and sal&gt;2000;</span><br><span class="line">/*2.查询程序员的名字,工资,部门名和部门地点*/</span><br><span class="line">select e.name,sal,d.name,loc from emp e.dept d where e.dept_id=d.id and job=&quot;程序员&quot;;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="关联查询之内链接"><a href="#关联查询之内链接" class="headerlink" title="关联查询之内链接"></a>关联查询之内链接</h2><ul>
+<li><p>等值连接和内连接作用一样,查询到的都是两个表的交际数据,推荐使用内连接</p>
+</li>
+<li><p>格式: select * from A jon B on 关联关系 where 其他条件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/*1.查询工资高于2000的每个员工的姓名和对应的部门名*/</span><br><span class="line">select e.name,d.name</span><br><span class="line">from emp e join dept d on e.dept_id=d.id where sal&gt;2000;</span><br><span class="line">/*2.查询程序员的名字,工资,部门名和部门地点*/</span><br><span class="line">select e.name,sal,d.name,loc</span><br><span class="line">from emp e join dept d on e.dept_id=d.id where job=&quot;程序员&quot;;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="关联查询之外连接"><a href="#关联查询之外连接" class="headerlink" title="关联查询之外连接"></a>关联查询之外连接</h2><ul>
+<li><p>外连接查询到的是一张表的全部和另一张表的交集</p>
+</li>
+<li><p>格式: select * from A lefr/right join B on 关联关系 where 其他条件;</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/*1.查询所有员工姓名和对应的部门名*/</span><br><span class="line">select e.name,d.name from emp e left join dept d on e.dept_id=d.id;</span><br><span class="line">/*2.查询所有部门的名字和对应的员工姓名,工资和工作*/</span><br><span class="line">select d.name,e.name,sal,job</span><br><span class="line">from emp e right jon dept d on e.dept_id=d.id;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="关联查询总结"><a href="#关联查询总结" class="headerlink" title="关联查询总结:"></a>关联查询总结:</h2><ul>
+<li>如果查询的数据是多张表的数据则考虑使用关联查询</li>
+<li>如果查询的是两个表的交集数据,则使用等值连接或外连接(推荐)</li>
+<li>如果查询的是一张表和另外一张表的交集则使用外连接</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Hu XiuYuan</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://huxiuyuan/2022/03/22/mysql/%E7%AE%80%E5%8D%95SQL%E8%AF%AD%E5%8F%A5/">https://huxiuyuan/2022/03/22/mysql/%E7%AE%80%E5%8D%95SQL%E8%AF%AD%E5%8F%A5/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://huxiuyuan" target="_blank">HXY</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/huxiuyuan/java-learn/202203191528200.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/03/24/%E5%89%8D%E7%AB%AF/JavaScript/es6/"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/huxiuyuan/java-learn/202203191529256.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">ES6特性</div></div></a></div><div class="next-post pull-right"><a href="/2022/03/21/Docker/Centos7%E5%AE%89%E8%A3%85Docker/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/huxiuyuan/java-learn/202203191527976.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Docker安装</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="lv-container" data-id="city" data-uid="MTAyMC81NTc4Ni8zMjI1Mg=="></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://cdn.jsdelivr.net/gh/huxiuyuan/java-learn/202203182223696.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Hu XiuYuan</div><div class="author-info__description">不负韶华</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/huxiuyuan"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/huxiuyuan" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:a811437621@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/huxiuyuan.github.io" target="_blank" title="博客"><i class="fab fa-algolia"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">天黑就睡，天亮就起 🐸</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.</span> <span class="toc-text">数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL%E8%AF%AD%E8%A8%80"><span class="toc-number">2.</span> <span class="toc-text">SQL语言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BD%AF%E4%BB%B6"><span class="toc-number">3.</span> <span class="toc-text">连接数据库软件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BD%AF%E4%BB%B6%E5%9C%A8%E6%95%B0%E6%8D%AE%E5%BA%93%E6%96%87%E4%BB%B6%E4%B8%AD%E4%BF%9D%E5%AD%98%E6%95%B0%E6%8D%AE"><span class="toc-number">4.</span> <span class="toc-text">如何使用数据库软件在数据库文件中保存数据?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A8%E7%9B%B8%E5%85%B3%E7%9A%84SQL%E8%AF%AD%E5%8F%A5"><span class="toc-number">5.</span> <span class="toc-text">表相关的SQL语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%9B%B8%E5%85%B3SQL"><span class="toc-number">6.</span> <span class="toc-text">数据相关SQL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E6%89%B9%E5%A4%84%E7%90%86%E6%96%87%E4%BB%B6-sql"><span class="toc-number">7.</span> <span class="toc-text">导入批处理文件 *.sql</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">8.</span> <span class="toc-text">数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E9%94%AE%E7%BA%A6%E6%9D%9F-primary-key"><span class="toc-number">9.</span> <span class="toc-text">主键约束 primary key</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E9%94%AE%E7%BA%A6%E6%9D%9F-%E8%87%AA%E5%A2%9E-auto-increment"><span class="toc-number">10.</span> <span class="toc-text">主键约束+自增 auto_increment</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AF%94%E8%BE%83%E8%BF%90%E7%AE%97%E7%AC%A6-gt-lt-gt-lt-%E5%92%8C-lt-gt"><span class="toc-number">11.</span> <span class="toc-text">比较运算符 &gt; &lt; &gt;&#x3D; &lt;&#x3D; !&#x3D;和&lt;&gt;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8Eand-%E6%88%96or-%E9%9D%9Enot"><span class="toc-number">12.</span> <span class="toc-text">与and 或or 非not</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#between-x-and-y"><span class="toc-number">13.</span> <span class="toc-text">between x and y</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#in"><span class="toc-number">14.</span> <span class="toc-text">in</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2like"><span class="toc-number">15.</span> <span class="toc-text">模糊查询like</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F-order-by"><span class="toc-number">16.</span> <span class="toc-text">排序 order by</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2"><span class="toc-number">17.</span> <span class="toc-text">分页查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%AB%E5%90%8D"><span class="toc-number">18.</span> <span class="toc-text">别名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97"><span class="toc-number">19.</span> <span class="toc-text">数值计算 + - * &#x2F; %</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%81%9A%E5%90%88%E5%87%BD%E6%95%B0"><span class="toc-number">20.</span> <span class="toc-text">聚合函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E7%BB%84%E6%9F%A5%E8%AF%A2"><span class="toc-number">21.</span> <span class="toc-text">分组查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Having"><span class="toc-number">22.</span> <span class="toc-text">Having</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%84%E7%A7%8D%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E9%A1%BA%E5%BA%8F"><span class="toc-number">23.</span> <span class="toc-text">各种关键字的顺序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%90%E6%9F%A5%E8%AF%A2-%E5%B5%8C%E5%A5%97%E6%9F%A5%E8%AF%A2"><span class="toc-number">24.</span> <span class="toc-text">子查询(嵌套查询)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E8%81%94%E5%85%B3%E7%B3%BB"><span class="toc-number">25.</span> <span class="toc-text">关联关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E8%81%94%E6%9F%A5%E8%AF%A2"><span class="toc-number">26.</span> <span class="toc-text">关联查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E8%81%94%E6%9F%A5%E8%AF%A2%E4%B9%8B%E7%AD%89%E5%80%BC%E8%BF%9E%E6%8E%A5"><span class="toc-number">27.</span> <span class="toc-text">关联查询之等值连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E8%81%94%E6%9F%A5%E8%AF%A2%E4%B9%8B%E5%86%85%E9%93%BE%E6%8E%A5"><span class="toc-number">28.</span> <span class="toc-text">关联查询之内链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E8%81%94%E6%9F%A5%E8%AF%A2%E4%B9%8B%E5%A4%96%E8%BF%9E%E6%8E%A5"><span class="toc-number">29.</span> <span class="toc-text">关联查询之外连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E8%81%94%E6%9F%A5%E8%AF%A2%E6%80%BB%E7%BB%93"><span class="toc-number">30.</span> <span class="toc-text">关联查询总结:</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/03/24/%E5%89%8D%E7%AB%AF/JavaScript/es6/" title="ES6特性"><img src="https://cdn.jsdelivr.net/gh/huxiuyuan/java-learn/202203191529256.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ES6特性"/></a><div class="content"><a class="title" href="/2022/03/24/%E5%89%8D%E7%AB%AF/JavaScript/es6/" title="ES6特性">ES6特性</a><time datetime="2022-03-24T10:10:28.914Z" title="发表于 2022-03-24 18:10:28">2022-03-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/22/mysql/%E7%AE%80%E5%8D%95SQL%E8%AF%AD%E5%8F%A5/" title="MySQL"><img src="https://cdn.jsdelivr.net/gh/huxiuyuan/java-learn/202203191528200.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MySQL"/></a><div class="content"><a class="title" href="/2022/03/22/mysql/%E7%AE%80%E5%8D%95SQL%E8%AF%AD%E5%8F%A5/" title="MySQL">MySQL</a><time datetime="2022-03-22T12:49:07.986Z" title="发表于 2022-03-22 20:49:07">2022-03-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/21/Docker/Centos7%E5%AE%89%E8%A3%85Docker/" title="Docker安装"><img src="https://cdn.jsdelivr.net/gh/huxiuyuan/java-learn/202203191527976.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Docker安装"/></a><div class="content"><a class="title" href="/2022/03/21/Docker/Centos7%E5%AE%89%E8%A3%85Docker/" title="Docker安装">Docker安装</a><time datetime="2022-03-21T13:39:19.696Z" title="发表于 2022-03-21 21:39:19">2022-03-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/20/Docker/docker/" title="Docker"><img src="https://cdn.jsdelivr.net/gh/huxiuyuan/java-learn/202203191529256.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Docker"/></a><div class="content"><a class="title" href="/2022/03/20/Docker/docker/" title="Docker">Docker</a><time datetime="2022-03-19T19:41:06.953Z" title="发表于 2022-03-20 03:41:06">2022-03-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/19/hexo/hello-world/" title="Hello World"><img src="https://cdn.jsdelivr.net/gh/huxiuyuan/java-learn/202203191528200.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/2022/03/19/hexo/hello-world/" title="Hello World">Hello World</a><time datetime="2022-03-18T17:34:43.135Z" title="发表于 2022-03-19 01:34:43">2022-03-19</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By Hu XiuYuan</div><div class="footer_custom_text"><div>Welcome to my Blog!</div></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadLivere () {
+  if (typeof LivereTower === 'object') {
+    window.LivereTower.init()
+  }
+  else {
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  }
+}
+
+if ('Livere' === 'Livere' || !false) {
+  if (false) btf.loadComment(document.getElementById('lv-container'), loadLivere)
+  else loadLivere()
+}
+else {
+  function loadOtherComment () {
+    loadLivere()
+  }
+}</script></div><script data-pjax defer src="https://cdn.jsdelivr.net/gh/xiabo2/CDN@latest/fishes.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (true) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+  window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>function history_calendar_injector_config(){
+                var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+                var item_html = '<div class="card-widget card-history"><div class="card-content"><div class="item-headline"><i class="fas fa-clock fa-spin"></i><span>那年今日</span></div><div id="history-baidu" style="height: 100px;overflow: hidden"><div class="history_swiper-container" id="history-container" style="width: 100%;height: 100%"><div class="swiper-wrapper" id="history_container_wrapper" style="height:20px"></div></div></div></div>';
+                console.log('已挂载history_calendar')
+                // parent_div_git.innerHTML=item_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",item_html) // 有报错，但不影响使用(支持pjax跳转)
+            }if( document.getElementsByClassName('sticky_layout')[0] && (location.pathname ==='all'|| 'all' ==='all')){
+
+            history_calendar_injector_config()
+        } </script><script data-pjax  src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script><script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-card-history/baiduhistory/js/main.js"></script><script data-pjax>function electric_clock_injector_config(){
+                var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+                var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img id="card-clock-loading" src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-clock/clock/images/weather/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading" class="entered loading"></div></div></div></div></div>';
+                console.log('已挂载electric_clock')
+                // parent_div_git.innerHTML=item_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",item_html) // 有报错，但不影响使用(支持pjax跳转)
+            }if( document.getElementsByClassName('sticky_layout')[0] && (location.pathname ==='all'|| 'all' ==='all')){
+
+            electric_clock_injector_config()
+        } </script><script src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script data-pjax  src="https://cdn.jsdelivr.net/gh/Zfour/hexo-electric-clock@1.0.6/clock.js"></script><script data-pjax src="https://unpkg.zhimg.com/hexo-filter-gitcalendar/lib/gitcalendar.js"></script><script data-pjax>
+  function gitcalendar_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<div class="recent-post-item" style="width:100%;height:auto;padding:10px;"><style>#git_container{min-height: 280px}@media screen and (max-width:650px) {#git_container{min-height: 0px}}</style><div id="git_loading" style="width:10%;height:100%;margin:0 auto;display: block;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animatetransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animatetransform></path></svg><style>#git_container{display: none;}</style></div><div id="git_container"></div></div>';
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      console.log('已挂载gitcalendar')
+      }
+
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+        gitcalendar_injector_config()
+        GitCalendarInit("https://gitcalendar.akilar.top/api?huxiuyuan",['#e4dfd7', '#f9f4dc', '#f7e8aa', '#f7e8aa', '#f8df72', '#fcd217', '#fcc515', '#f28e16', '#fb8b05', '#d85916', '#f43e06'],'huxiuyuan')
+    }
+  </script><!-- hexo injector body_end end --></body></html>
