@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://huxiuyuan/2022/03/24/%E5%89%8D%E7%AB%AF/JavaScript/es6/</loc>
+    
+    <lastmod>2022-03-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://huxiuyuan/link/index.html</loc>
     
     <lastmod>2022-03-22</lastmod>
@@ -85,7 +94,7 @@
 
   <url>
     <loc>https://huxiuyuan/</loc>
-    <lastmod>2022-03-22</lastmod>
+    <lastmod>2022-03-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -93,7 +102,14 @@
   
   <url>
     <loc>https://huxiuyuan/tags/Docker/</loc>
-    <lastmod>2022-03-22</lastmod>
+    <lastmod>2022-03-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://huxiuyuan/tags/JavaScript/</loc>
+    <lastmod>2022-03-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -102,14 +118,21 @@
   
   <url>
     <loc>https://huxiuyuan/categories/Docker/</loc>
-    <lastmod>2022-03-22</lastmod>
+    <lastmod>2022-03-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://huxiuyuan/categories/Hexo/</loc>
-    <lastmod>2022-03-22</lastmod>
+    <lastmod>2022-03-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://huxiuyuan/categories/%E5%89%8D%E7%AB%AF/</loc>
+    <lastmod>2022-03-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>

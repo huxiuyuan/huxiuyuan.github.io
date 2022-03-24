@@ -1,3 +1,4 @@
+https://huxiuyuan/2022/03/24/%E5%89%8D%E7%AB%AF/JavaScript/es6/
 https://huxiuyuan/link/index.html
 https://huxiuyuan/2022/03/20/Docker/docker/
 https://huxiuyuan/2022/03/21/Docker/Centos7%E5%AE%89%E8%A3%85Docker/
@@ -9,5 +10,7 @@ https://huxiuyuan/comment/index.html
 https://huxiuyuan/about/index.html
 https://huxiuyuan/
 https://huxiuyuan/tags/Docker/
+https://huxiuyuan/tags/JavaScript/
 https://huxiuyuan/categories/Docker/
 https://huxiuyuan/categories/Hexo/
+https://huxiuyuan/categories/%E5%89%8D%E7%AB%AF/
