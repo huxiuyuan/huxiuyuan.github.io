@@ -12,7 +12,7 @@ https://huxiuyuan/about/index.html
 https://huxiuyuan/
 https://huxiuyuan/tags/Docker/
 https://huxiuyuan/tags/JavaScript/
-https://huxiuyuan/categories/Hexo/
 https://huxiuyuan/categories/Docker/
 https://huxiuyuan/categories/MySQL/
+https://huxiuyuan/categories/Hexo/
 https://huxiuyuan/categories/%E5%89%8D%E7%AB%AF/
