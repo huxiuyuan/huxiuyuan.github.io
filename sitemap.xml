@@ -2,34 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://huxiuyuan/2022/03/22/mysql/%E7%AE%80%E5%8D%95SQL%E8%AF%AD%E5%8F%A5/</loc>
-    
-    <lastmod>2022-03-27</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://huxiuyuan/2022/03/19/hexo/hello-world/</loc>
-    
-    <lastmod>2022-03-27</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://huxiuyuan/2022/03/24/%E5%89%8D%E7%AB%AF/JavaScript/es6/</loc>
-    
-    <lastmod>2022-03-27</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://huxiuyuan/2022/03/20/Docker/docker/</loc>
+    <loc>https://huxiuyuan/gallery/index.html</loc>
     
     <lastmod>2022-03-27</lastmod>
     
@@ -47,7 +20,34 @@
   </url>
   
   <url>
-    <loc>https://huxiuyuan/gallery/index.html</loc>
+    <loc>https://huxiuyuan/2022/03/20/Docker/docker/</loc>
+    
+    <lastmod>2022-03-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://huxiuyuan/2022/03/24/%E5%89%8D%E7%AB%AF/JavaScript/es6/</loc>
+    
+    <lastmod>2022-03-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://huxiuyuan/2022/03/22/mysql/%E7%AE%80%E5%8D%95SQL%E8%AF%AD%E5%8F%A5/</loc>
+    
+    <lastmod>2022-03-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://huxiuyuan/2022/03/19/hexo/hello-world/</loc>
     
     <lastmod>2022-03-27</lastmod>
     
