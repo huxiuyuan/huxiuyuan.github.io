@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>虚拟机安装 Win 7</title>
+      <link href="/2022/04/10/%E5%85%B6%E4%BB%96/%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85win%207/"/>
+      <url>/2022/04/10/%E5%85%B6%E4%BB%96/%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85win%207/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\css\APlayer.min.css"><script src="\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\js\Meting.min.js"></script><ol><li><p>创建好之后设置win 7镜像文件</p><p><img src="https://cdn.jsdelivr.net/gh/huxiuyuan/java-learn/202204100117799.png" alt="image-20220410011724690"></p></li><li><p>开启虚拟机</p></li><li><p>选择自定义安装</p><p><img src="https://cdn.jsdelivr.net/gh/huxiuyuan/java-learn/202204100120607.png" alt="image-20220410012050524"></p></li><li><p>分配磁盘空间</p><p><img src="https://cdn.jsdelivr.net/gh/huxiuyuan/java-learn/202204100121970.png" alt="image-20220410012155892"></p></li><li><p>等待安装</p><p><img src="https://cdn.jsdelivr.net/gh/huxiuyuan/java-learn/202204100124994.png" alt="image-20220410012423928"></p></li><li><p>输入用户名，跳过密码</p><p><img src="https://cdn.jsdelivr.net/gh/huxiuyuan/java-learn/202204100128923.png" alt="image-20220410012810857"></p></li><li><p>取消勾选，下一步</p><p><img src="https://cdn.jsdelivr.net/gh/huxiuyuan/java-learn/202204100129562.png" alt="image-20220410012906500"></p></li><li><p>选择以后询问</p><p><img src="https://cdn.jsdelivr.net/gh/huxiuyuan/java-learn/202204100130950.png" alt="image-20220410013001881"></p></li><li><p>安装虚拟机工具</p><p><img src="https://cdn.jsdelivr.net/gh/huxiuyuan/java-learn/202204100131838.png" alt="image-20220410013141771"></p></li><li><p>查找路径，双击安装</p><p><img src="https://cdn.jsdelivr.net/gh/huxiuyuan/java-learn/202204100133713.png" alt="image-20220410013314620"></p></li><li><p>下一步，典型安装</p><p><img src="https://cdn.jsdelivr.net/gh/huxiuyuan/java-learn/202204100134765.png" alt="image-20220410013446655"></p></li><li><p>将office 10 复制进来，点击安装</p><p><img src="https://cdn.jsdelivr.net/gh/huxiuyuan/java-learn/202204100136870.png" alt="image-20220410013609721"></p></li><li><p>等待安装</p></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 虚拟机 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> windows 7 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>JavaSctipt基础</title>
       <link href="/2022/04/07/%E5%89%8D%E7%AB%AF/JavaScript/JS%E5%9F%BA%E7%A1%80/"/>
       <url>/2022/04/07/%E5%89%8D%E7%AB%AF/JavaScript/JS%E5%9F%BA%E7%A1%80/</url>
